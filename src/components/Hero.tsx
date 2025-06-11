@@ -130,8 +130,8 @@ const Hero = () => {
 
                         <h1 className="special-font hero-heading text-blue-100">redfi<b>n</b>e</h1>
 
-                        <p className="mb-5 max-w-64 font-robert-regular text-blue-100">Enter the Metagame Layer <br/>
-                        Unleash the Play Economy</p>
+                        <p className="mb-5 max-w-64 font-robert-regular text-blue-100">Enter the Smash Bros Universe <br/>
+                        Unleash the hype!</p>
 
                         <Button id="watch-trailer"
                                 title="Watch Trailer"
