@@ -3,6 +3,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import { TiLocationArrow } from "react-icons/ti";
 import { useEffect, useRef, useState } from "react";
+import LoadingScreen from "./LoadingScreen.tsx";
 
 import Button from "./Button.js";
 
@@ -30,7 +31,7 @@ const Hero = () => {
     }
 
     useEffect(() => {
-        if(loadedVideos === totalVideos - 1){
+        if (loadedVideos === totalVideos - 1) {
             setIsLoading(false);
         }
     }, [loadedVideos]);
@@ -85,12 +86,8 @@ const Hero = () => {
     return (
         <div className={"relative h-dvh w-screen overflow-x-hidden"}>
             {isLoading && (
-                <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
-                    <div className="three-body">
-                        <div className="three-body__dot"></div>
-                        <div className="three-body__dot"></div>
-                        <div className="three-body__dot"></div>
-                    </div>
+                <div className="absolute z-[100] h-dvh w-screen overflow-hidden bg-black">
+                    <LoadingScreen />
                 </div>
             )}
             <div id="video-frame" className="relative z-10 h-dvh overflow-hidden rounded-lg bg-blue-75">
@@ -98,28 +95,28 @@ const Hero = () => {
                     <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
                         <div onClick={handleMiniVideoClick} className={"origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"}>
                             <video ref={nextVideoReference}
-                                   src={getVideoSource(currentIndex + 1)}
-                                   loop
-                                   muted
-                                   id="current-video"
-                                   className="size-64 origin-center scale-150 object-cover object-center"
-                                   onLoadedData={handleVideoLoad}
+                                src={getVideoSource(currentIndex + 1)}
+                                loop
+                                muted
+                                id="current-video"
+                                className="size-64 origin-center scale-150 object-cover object-center"
+                                onLoadedData={handleVideoLoad}
                             />
                         </div>
                     </div>
                     <video ref={nextVideoReference}
-                           src={getVideoSource(currentIndex)}
-                           loop
-                           muted
-                           id="next-video"
-                           className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
-                           onLoadedData={handleVideoLoad}
+                        src={getVideoSource(currentIndex)}
+                        loop
+                        muted
+                        id="next-video"
+                        className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
+                        onLoadedData={handleVideoLoad}
                     />
                     <video src={getVideoSource(currentIndex === totalVideos - 1 ? 1 : currentIndex)}
-                           autoPlay
-                           loop
-                           muted
-                           className="absolute left-0 top-0 size-full object-cover object-center"/>
+                        autoPlay
+                        loop
+                        muted
+                        className="absolute left-0 top-0 size-full object-cover object-center" />
                 </div>
                 <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
                     G<b>a</b>ming
@@ -130,13 +127,13 @@ const Hero = () => {
 
                         <h1 className="special-font hero-heading text-blue-100">redfi<b>n</b>e</h1>
 
-                        <p className="mb-5 max-w-64 font-robert-regular text-blue-100">Enter the Smash Bros Universe <br/>
-                        Unleash the hype!</p>
+                        <p className="mb-5 max-w-64 font-robert-regular text-blue-100">Enter the Smash Bros Universe <br />
+                            Unleash the hype!</p>
 
                         <Button id="watch-trailer"
-                                title="Watch Trailer"
-                                leftIcon={<TiLocationArrow/>}
-                                containerClass="!bg-red-600 flex-center gap-1 text-white hover:text-black hover:!bg-white"/>
+                            title="Watch Trailer"
+                            leftIcon={<TiLocationArrow />}
+                            containerClass="!bg-red-600 flex-center gap-1 text-white hover:text-black hover:!bg-white" />
                     </div>
                 </div>
             </div>
